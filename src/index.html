@@ -50,17 +50,41 @@
 
                 <section>
                     <h2>Basics</h2>
-                    <p>
-                        <ul>
-                            <li>HTML bullets</li>
-                            <li>And sub-bullets:
-                                <ul>
-                                    <li>Like this</li>
-                                    <li>And this</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </p>
+                    <ul>
+                        <li>HTML bullets</li>
+                        <li>And sub-bullets:
+                            <ul>
+                                <li>Like this</li>
+                                <li>And this</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="fragment"><code data-trim>
+&lt;section&gt;
+    <h2>Basics</h2>
+    <ul>
+        <li>HTML bullets</li>
+        <li>And sub-bullets:
+            <ul>
+                <li>Like this</li>
+                <li>And this</li>
+            </ul>
+        </li>
+    </ul>
+&lt;/section&gt;
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Did you see that?</h2>
+                    <pre><code data-trim>
+&lt;pre class="fragment"&gt;&lt;code data-trim&gt;
+&lt;section&gt;
+    ...blah blah blah
+    you already saw this part...
+&lt;/section&gt;
+&lt;/code&gt;&lt;/pre&gt;
+                    </code></pre>
                 </section>
 
             </div>
@@ -85,7 +109,8 @@
                 // Optional reveal.js plugins
                 dependencies: [
                     { src: 'js/classList.js', condition: function() { return !document.body.classList; } },
-                    { src: 'js/zoom.js', async: true }
+                    { src: 'js/zoom.js', async: true },
+                    { src: 'js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                 ]
             });
 
