@@ -49,6 +49,11 @@ module.exports = function(grunt) {
                     dest: '<%= config.dist %>/js'
                 }, {
                     expand: true,
+                    cwd: 'bower_components/reveal.js/plugin/markdown',
+                    src: '*.js',
+                    dest: '<%= config.dist %>/js'
+                }, {
+                    expand: true,
                     cwd: 'bower_components/reveal.js',
                     src: 'css/theme/*.css',
                     dest: '<%= config.dist %>'

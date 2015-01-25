@@ -87,6 +87,28 @@
                     </code></pre>
                 </section>
 
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Markdown
+
+* For when you need to churn out the presentation quick
+* Or a non-developer should be able to edit it
+* Or when the < key is broken
+
+    ```
+    <section data-markdown>
+    <script type="text/template">
+      ## Markdown support
+
+      * For when you need to churn out the presentation quick
+      * Or a non-developer should be able to edit it
+      * Or when the < key is broken
+    < /script>
+    </section>
+    ```
+                    </script>
+                </section>
+
             </div>
 
         </div>
@@ -111,6 +133,8 @@
                     { src: 'js/classList.js', condition: function() { return !document.body.classList; } },
                     { src: 'js/zoom.js', async: true },
                     { src: 'js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                 ]
             });
 
