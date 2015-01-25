@@ -1,0 +1,21 @@
+{
+  "name": "revealjs-howto",
+  "version": "0.0.0",
+  "authors": [
+    "Tom Panning <tom.panning@nextcentury.com>"
+  ],
+  "description": "A presentation that shows how to create Reveal.js presentations",
+  "main": "index.html",
+  "license": "Apache 2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js": "~3.0.0"
+  }
+}
