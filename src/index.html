@@ -141,33 +141,33 @@ pt.slideIdToFunctions = pt.slideIdToFunctions || {};
 pt.slideIdToFunctions['d3-fragments'] = {
     'init': function() {
         var houses = [
-            { id: "pp", name: "PowerPoint", color: "blue", score: 0 },
-            { id: "reveal", name: "Reveal.js", color: "blue", score: 0 },
+            { id: "pp", name: "PowerPoint", score: 0 },
+            { id: "reveal", name: "Reveal.js", score: 0 },
         ];
 
     },
     '-1': function() {
         var houses = [
-            { id: "pp", name: "PowerPoint", color: "blue", score: 200 },
-            { id: "reveal", name: "Reveal.js", color: "blue", score: 400 },
+            { id: "pp", name: "PowerPoint", score: 200 },
+            { id: "reveal", name: "Reveal.js", score: 400 },
         ];
 
         updateD3FragmentsSlide(houses);
     },
     0: function() {
         var houses = [
-            { id: "pp", name: "PowerPoint", color: "blue", score: 200 },
-            { id: "reveal", name: "Reveal.js", color: "blue", score: 400 },
-            { id: "reveal-d3", name: "Reveal.js + D3", color: "blue", score: 600 },
+            { id: "pp", name: "PowerPoint", score: 200 },
+            { id: "reveal", name: "Reveal.js", score: 400 },
+            { id: "reveal-d3", name: "Reveal.js + D3", score: 600 },
         ];
 
         updateD3FragmentsSlide(houses);
     },
     1: function() {
         var houses = [
-            { id: "pp", name: "PowerPoint", color: "blue", score: 200 },
-            { id: "reveal", name: "Reveal.js", color: "blue", score: 400 },
-            { id: "reveal-d3", name: "Reveal.js + D3 + Fragments", color: "blue", score: 800 },
+            { id: "pp", name: "PowerPoint", score: 200 },
+            { id: "reveal", name: "Reveal.js", score: 400 },
+            { id: "reveal-d3", name: "Reveal.js + D3 + Fragments", score: 800 },
         ];
 
         updateD3FragmentsSlide(houses);
@@ -175,6 +175,26 @@ pt.slideIdToFunctions['d3-fragments'] = {
 };
 
 </script>
+                </section>
+
+                <section iframe-demo data-background-iframe="http://demo.neonframework.org/neon-examples/app/">
+                </section>
+
+                <section>
+                    <pre><code data-trim>
+&lt;section iframe-demo data-background-iframe="http://demo.neonframework.org/neon-examples/app/"&gt;
+&lt;/section&gt;
+                    </code></pre>
+                    <pre><code data-trim>
+Reveal.addEventListener('slidechanged', function(event) {
+    // Pull background up when a demo-iframe is being shown
+    if (event.currentSlide.hasAttribute('iframe-demo')) {
+        document.querySelector('.reveal > .backgrounds').style['z-index'] = 1;
+    } else {
+        document.querySelector('.reveal > .backgrounds').style['z-index'] = 0;
+    }
+});
+                    </code></pre>
                 </section>
 
             </div>
@@ -206,6 +226,15 @@ pt.slideIdToFunctions['d3-fragments'] = {
                     { src: 'js/d3.min.js', async: true },
                     { src: 'js/reveal-to-d3.js', async: true },
                 ]
+            });
+
+            Reveal.addEventListener('slidechanged', function(event) {
+                // Pull background up when a demo-iframe is being shown
+                if (event.currentSlide.hasAttribute('iframe-demo')) {
+                    document.querySelector('.reveal > .backgrounds').style['z-index'] = 1;
+                } else {
+                    document.querySelector('.reveal > .backgrounds').style['z-index'] = 0;
+                }
             });
 
         </script>
