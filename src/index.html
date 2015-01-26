@@ -109,6 +109,74 @@
                     </script>
                 </section>
 
+                <section id="d3-fragments">
+                    <h2>D3 Integration</h2>
+                    <div id="awesomeness"></div>
+                    <span class="fragment" data-fragment-index="1"></span>
+                    <span class="fragment" data-fragment-index="2"></span>
+<script>
+function updateD3FragmentsSlide(categories) {
+    var rows = d3.select("#awesomeness");
+
+    var join = rows.selectAll("p").data(categories,function(category){return category.id});
+    join.enter().append("p")
+        .style({
+            "background-color": function (category) { return "#42affa"; },
+            "color": function(category) { return "black"; },
+            "width": function (category) { return category.score + "px"; }
+        })
+        .text(function(category) { return category.name })
+            .transition().style("opacity", 1);
+
+    join.transition().style({
+            "width": function (category) { return category.score + "px"; }
+        }).text(function(category) { return category.name })
+        .transition().style("opacity", 1);
+
+    join.exit().transition().style("opacity", 0).remove();
+}
+
+var pt = pt || {};
+pt.slideIdToFunctions = pt.slideIdToFunctions || {};
+pt.slideIdToFunctions['d3-fragments'] = {
+    'init': function() {
+        var houses = [
+            { id: "pp", name: "PowerPoint", color: "blue", score: 0 },
+            { id: "reveal", name: "Reveal.js", color: "blue", score: 0 },
+        ];
+
+    },
+    '-1': function() {
+        var houses = [
+            { id: "pp", name: "PowerPoint", color: "blue", score: 200 },
+            { id: "reveal", name: "Reveal.js", color: "blue", score: 400 },
+        ];
+
+        updateD3FragmentsSlide(houses);
+    },
+    0: function() {
+        var houses = [
+            { id: "pp", name: "PowerPoint", color: "blue", score: 200 },
+            { id: "reveal", name: "Reveal.js", color: "blue", score: 400 },
+            { id: "reveal-d3", name: "Reveal.js + D3", color: "blue", score: 600 },
+        ];
+
+        updateD3FragmentsSlide(houses);
+    },
+    1: function() {
+        var houses = [
+            { id: "pp", name: "PowerPoint", color: "blue", score: 200 },
+            { id: "reveal", name: "Reveal.js", color: "blue", score: 400 },
+            { id: "reveal-d3", name: "Reveal.js + D3 + Fragments", color: "blue", score: 800 },
+        ];
+
+        updateD3FragmentsSlide(houses);
+    }
+};
+
+</script>
+                </section>
+
             </div>
 
         </div>
@@ -135,6 +203,8 @@
                     { src: 'js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                     { src: 'js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: 'js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'js/d3.min.js', async: true },
+                    { src: 'js/reveal-to-d3.js', async: true },
                 ]
             });
 
