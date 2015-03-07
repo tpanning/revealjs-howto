@@ -35,6 +35,11 @@
     </head>
 
     <body>
+        <!--
+            If you want the ribbon on all slides, just put this link in.
+            To have it only shown on some slides, see the slidechanged handler toward the end of this file.
+        -->
+        <a id="github-ribbon" href="https://github.com/tpanning/revealjs-howto"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1000;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
 
         <div class="reveal">
 
@@ -177,10 +182,26 @@
                 </section>
 
                 <section>
+                    <h1>Sharing Slides</h1>
+                </section>
+
+                <section>
                     <h2>PDF Export</h2>
                     <ul>
-                        <li>Requires Chrome</li>
                         <li>Just add <a target="_blank" href="index.html?print-pdf"><code>?print-pdf</code></a> to the URL and print</li>
+                        <li>Works best with Chrome</li>
+                    </ul>
+                </section>
+
+                <section class="with-github-ribbon">
+                    <h2>Collaborate on GitHub</h2>
+                    <ul>
+                        <li>Version tracking</li>
+                        <li>Diffs</li>
+                        <li>Pull requests</li>
+                        <li>Even <a href="http://slidedeck.io/EvanOxfeld/revealjs-on-github-presentation">host
+                            using GitHub Pages</a></li>
+                        <li class="fragment">Or keep merging PowerPoint slides...</li>
                     </ul>
                 </section>
 
@@ -329,6 +350,15 @@ $ node app.js -p 3000 --sshauth "publickey"
                     document.querySelector('.reveal > .backgrounds').style['z-index'] = 1;
                 } else {
                     document.querySelector('.reveal > .backgrounds').style['z-index'] = 0;
+                }
+            });
+
+            // Selectively show the GitHub ribbon based on whether the section has the 'with-github-ribbon' class
+            Reveal.addEventListener('slidechanged', function(isSlideEvent) {
+                if (Reveal.getCurrentSlide().classList.contains("with-github-ribbon")) {
+                    document.getElementById("github-ribbon").style.display = 'block';
+                } else {
+                    document.getElementById("github-ribbon").style.display = 'none';
                 }
             });
 
