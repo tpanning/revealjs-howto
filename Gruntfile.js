@@ -79,15 +79,17 @@ module.exports = function(grunt) {
                     dest: '<%= config.dist %>'
                 }]
             }
-        }/*, uglify: {
-        }*/
+        },
+        watch: {
+            files: 'src/index.html',
+            tasks: ['copy']
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', [
-        'copy'/*,
-        'uglify'*/
+        'copy'
     ]);
 }
