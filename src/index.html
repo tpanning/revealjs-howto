@@ -16,6 +16,23 @@
 
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/black.css" id="theme">
+        <style>
+#github-ribbon {
+    display: none;
+}
+
+#github-ribbon img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    z-index: 1000;
+}
+
+.with-github-ribbon #github-ribbon {
+    display: block;
+}
+        </style>
 
         <!-- Code syntax highlighting -->
         <link rel="stylesheet" href="css/zenburn.css">
@@ -39,7 +56,7 @@
             If you want the ribbon on all slides, just put this link in.
             To have it only shown on some slides, see the slidechanged handler toward the end of this file.
         -->
-        <a id="github-ribbon" href="https://github.com/tpanning/revealjs-howto"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1000;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+        <a id="github-ribbon" href="https://github.com/tpanning/revealjs-howto"><img src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
 
         <div class="reveal">
 
@@ -193,7 +210,7 @@
                     </ul>
                 </section>
 
-                <section class="with-github-ribbon">
+                <section data-state="with-github-ribbon">
                     <h2>Collaborate on GitHub</h2>
                     <ul>
                         <li>Version tracking</li>
@@ -213,6 +230,215 @@
                         <li>See my example project
                         <a href="https://github.com/tpanning/revealjs-solo">reveal.js Solo</a></li>
                     </ol>
+                </section>
+
+                <section>
+                    <h1>Show Me<br>The<br>JavaScript</h1>
+                </section>
+
+                <section>
+                    <pre><code data-trim>
+Reveal.addEventListener('ready', function(event) {
+    // event.currentSlide, event.indexh, event.indexv
+});
+Reveal.addEventListener('slidechanged', function(event) {
+    // event.previousSlide, event.currentSlide,
+    // event.indexh, event.indexv
+});
+Reveal.addEventListener('fragmentshown', function(event) {
+    // event.fragment = the fragment DOM element
+});
+Reveal.addEventListener('fragmenthidden', function(event) {
+    // event.fragment = the fragment DOM element
+});
+                    </code></pre>
+                </section>
+
+                <section data-state="with-github-ribbon">
+                    <pre><code class="html" data-trim>
+&lt;body&gt;
+    &lt;a id="github-ribbon" href="..."&gt;&lt;img ...&gt;&lt;/a&gt;
+    &lt;slides&gt;
+        ...
+        &lt;section data-state="with-github-ribbon"&gt;
+            &lt;h2&gt;Collaborate on Github&lt;/h2&gt;
+        &lt;/section&gt;
+        ...
+    &lt;/slides&gt;
+&lt;script&gt;
+Reveal.addEventListener( 'with-github-ribbon', function() {
+    // Not necessary in this case, but useful in other situations
+}, false );
+&lt;/script&gt;
+&lt;/body&gt;
+                    </pre></code>
+                    <pre><code class="css" data-trim>
+#github-ribbon {
+    display: none;
+}
+.with-github-ribbon #github-ribbon {
+    display: block;
+}
+                    </code></pre>
+
+                </section>
+
+                <section id="chartjs-line">
+                    <h2>Chart.js</h2>
+                    <canvas id="lineChart" width="500px" height="500px"></canvas>
+                    <script>
+var pt = pt || {};
+pt.slideIdToFunctions = pt.slideIdToFunctions || {};
+pt.slideIdToFunctions['chartjs-line'] = {
+    'init': function() {
+        var ctx = document.getElementById("lineChart").getContext("2d");
+        var data = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                }
+            ]
+        };
+        var options = {
+            ///Boolean - Whether grid lines are shown across the chart
+            scaleShowGridLines : true,
+
+            //String - Colour of the grid lines
+            scaleGridLineColor : "rgba(0,0,0,.05)",
+
+            //Number - Width of the grid lines
+            scaleGridLineWidth : 1,
+
+            //Boolean - Whether to show horizontal lines (except X axis)
+            scaleShowHorizontalLines: true,
+
+            //Boolean - Whether to show vertical lines (except Y axis)
+            scaleShowVerticalLines: true,
+
+            //Boolean - Whether the line is curved between points
+            bezierCurve : true,
+
+            //Number - Tension of the bezier curve between points
+            bezierCurveTension : 0.4,
+
+            //Boolean - Whether to show a dot for each point
+            pointDot : true,
+
+            //Number - Radius of each point dot in pixels
+            pointDotRadius : 4,
+
+            //Number - Pixel width of point dot stroke
+            pointDotStrokeWidth : 1,
+
+            //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+            pointHitDetectionRadius : 20,
+
+            //Boolean - Whether to show a stroke for datasets
+            datasetStroke : true,
+
+            //Number - Pixel width of dataset stroke
+            datasetStrokeWidth : 2,
+
+            //Boolean - Whether to fill the dataset with a colour
+            datasetFill : true,
+
+            //String - A legend template
+            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+        };
+        var myLineChart = new Chart(ctx).Line(data, options);
+    }
+};
+                    </script>
+                </section>
+
+                <section id="chartjs-bar">
+                    <h2>Chart.js</h2>
+                    <canvas id="barChart" width="500px" height="500px"></canvas>
+                    <script>
+var pt = pt || {};
+pt.slideIdToFunctions = pt.slideIdToFunctions || {};
+pt.slideIdToFunctions['chartjs-bar'] = {
+    'init': function() {
+        var ctx = document.getElementById("barChart").getContext("2d");
+        var data = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(151,187,205,0.5)",
+                    strokeColor: "rgba(151,187,205,0.8)",
+                    highlightFill: "rgba(151,187,205,0.75)",
+                    highlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                }
+            ]
+        };
+        var options = {
+            //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+            scaleBeginAtZero : true,
+
+            //Boolean - Whether grid lines are shown across the chart
+            scaleShowGridLines : true,
+
+            //String - Colour of the grid lines
+            scaleGridLineColor : "rgba(0,0,0,.05)",
+
+            //Number - Width of the grid lines
+            scaleGridLineWidth : 1,
+
+            //Boolean - Whether to show horizontal lines (except X axis)
+            scaleShowHorizontalLines: true,
+
+            //Boolean - Whether to show vertical lines (except Y axis)
+            scaleShowVerticalLines: true,
+
+            //Boolean - If there is a stroke on each bar
+            barShowStroke : true,
+
+            //Number - Pixel width of the bar stroke
+            barStrokeWidth : 2,
+
+            //Number - Spacing between each of the X value sets
+            barValueSpacing : 5,
+
+            //Number - Spacing between data sets within X values
+            barDatasetSpacing : 1,
+
+            //String - A legend template
+            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+        };
+        var myBarChart = new Chart(ctx).Bar(data, options);
+    }
+};
+                    </script>
                 </section>
 
                 <section id="d3-fragments">
@@ -349,6 +575,7 @@ $ node app.js -p 3000 --sshauth "publickey"
                     { src: 'js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                     { src: 'js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: 'js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'js/Chart.js', async: true },
                     { src: 'js/d3.min.js', async: true },
                     { src: 'js/reveal-to-d3.js', async: true },
                 ]
@@ -360,15 +587,6 @@ $ node app.js -p 3000 --sshauth "publickey"
                     document.querySelector('.reveal > .backgrounds').style['z-index'] = 1;
                 } else {
                     document.querySelector('.reveal > .backgrounds').style['z-index'] = 0;
-                }
-            });
-
-            // Selectively show the GitHub ribbon based on whether the section has the 'with-github-ribbon' class
-            Reveal.addEventListener('slidechanged', function(isSlideEvent) {
-                if (Reveal.getCurrentSlide().classList.contains("with-github-ribbon")) {
-                    document.getElementById("github-ribbon").style.display = 'block';
-                } else {
-                    document.getElementById("github-ribbon").style.display = 'none';
                 }
             });
 

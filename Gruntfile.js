@@ -64,6 +64,11 @@ module.exports = function(grunt) {
                     dest: '<%= config.dist %>'
                 }, {
                     expand: true,
+                    cwd: 'bower_components/Chart.js',
+                    src: 'Chart.js',
+                    dest: '<%= config.dist %>/js'
+                }, {
+                    expand: true,
                     cwd: 'bower_components/d3',
                     src: 'd3.min.js',
                     dest: '<%= config.dist %>/js'
