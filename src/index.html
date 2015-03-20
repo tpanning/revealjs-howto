@@ -377,10 +377,12 @@ Reveal.initialize({
                     <pre><code class="html" data-trim>
 &lt;section id="chartjs-bar"&gt;
     &lt;canvas id="barChart" width="500px" height="500px"&gt;&lt;/canvas&gt;
+    &lt;span class="fragment"&gt;&lt;/span&gt;
 &lt;/section&gt;
                     </code></pre>
 
                     <pre><code class="javascript" data-trim>
+var myBarChart;
 var pt = pt || {};
 pt.slideIdToFunctions = pt.slideIdToFunctions || {};
 pt.slideIdToFunctions['chartjs-bar'] = {
@@ -407,7 +409,15 @@ pt.slideIdToFunctions['chartjs-bar'] = {
                 }
             ]
         };
-        var myBarChart = new Chart(ctx).Bar(data);
+        myBarChart = new Chart(ctx).Bar(data);
+    },
+    '-1': function() {
+        myBarChart.datasets[0].bars[2].value = 80;
+        myBarChart.update();
+    },
+    '0': function() {
+        myBarChart.datasets[0].bars[2].value = 50;
+        myBarChart.update();
     }
 };
                     </code></pre>
@@ -416,7 +426,9 @@ pt.slideIdToFunctions['chartjs-bar'] = {
                 <section id="chartjs-bar">
                     <h2>Chart.js</h2>
                     <canvas id="barChart" width="500px" height="500px"></canvas>
+                    <span class="fragment"></span>
                     <script>
+var myBarChart;
 var pt = pt || {};
 pt.slideIdToFunctions = pt.slideIdToFunctions || {};
 pt.slideIdToFunctions['chartjs-bar'] = {
@@ -443,7 +455,15 @@ pt.slideIdToFunctions['chartjs-bar'] = {
                 }
             ]
         };
-        var myBarChart = new Chart(ctx).Bar(data);
+        myBarChart = new Chart(ctx).Bar(data);
+    },
+    '-1': function() {
+        myBarChart.datasets[0].bars[2].value = 80;
+        myBarChart.update();
+    },
+    '0': function() {
+        myBarChart.datasets[0].bars[2].value = 50;
+        myBarChart.update();
     }
 };
                     </script>
