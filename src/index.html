@@ -584,6 +584,76 @@ $ node app.js -p 3000 --sshauth "publickey"
                 </section>
 
                 <section>
+                    <h1>What else?</h1>
+                </section>
+
+                <section id="votes-slide">
+                    <div id="votes"></div>
+<script>
+var pt = pt || {};
+var votes = [
+    {
+        id: 'twilio',
+        title: 'Twilio',
+        votes: 0
+    },
+    {
+        id: 'started',
+        title: 'Getting started',
+        votes: 0
+    },
+    {
+        id: 'markdown',
+        title: 'Markdown-only slides',
+        votes: 0
+    },
+    {
+        id: 'multiplex',
+        title: 'Multiplex',
+        votes: 0
+    }
+];
+
+function voteFor(vote) {
+    vote.votes += 20;
+    console.log('Voting for ' + vote.id + ', now ' + vote.votes);
+    updateVoteChart();
+}
+
+function updateVoteChart() {
+    console.log('Updating');
+    var voteChart = d3.select("#votes");
+
+    var join = voteChart.selectAll('p').data(votes, function(vote){ return vote.id})
+    join.enter().append('p')
+        .style({
+            'background-color': function(vote) { return "#42affa"; },
+            'color': function(vote) { return 'black'; },
+            'width': function(vote) { return (vote.votes + 100) + 'px'; }
+        })
+        .text(function(vote) { return vote.title; })
+        .on('click', voteFor)
+        .transition().style('opacity', 1);
+
+    join.transition().style({
+            'width': function(vote) { return vote.votes + 100 + 'px'; }
+        })
+        .text(function(vote) { return vote.title; })
+        .transition().style('opacity', 1);
+
+    join.exit().transition().style('opactiy', 0).remove();
+}
+
+pt.slideIdToFunctions = pt.slideIdToFunctions || {};
+pt.slideIdToFunctions['votes-slide'] = {
+    'init': function() {
+        updateVoteChart();
+    }
+}
+</script>
+                </section>
+
+                <section>
                     <h1>Questions?</h1>
                 </section>
 
