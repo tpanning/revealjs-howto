@@ -614,14 +614,12 @@ var votes = [
     }
 ];
 
-function voteFor(vote) {
-    vote.votes += 20;
-    console.log('Voting for ' + vote.id + ', now ' + vote.votes);
-    updateVoteChart();
+function widthOf(vote) {
+    var voteCount = voting.getVotesFor(vote.id);
+    return (20 + voteCount*20) + 'px';
 }
 
 function updateVoteChart() {
-    console.log('Updating');
     var voteChart = d3.select("#votes");
 
     var join = voteChart.selectAll('p').data(votes, function(vote){ return vote.id})
@@ -629,14 +627,14 @@ function updateVoteChart() {
         .style({
             'background-color': function(vote) { return "#42affa"; },
             'color': function(vote) { return 'black'; },
-            'width': function(vote) { return (vote.votes + 100) + 'px'; }
+            'width': widthOf
         })
         .text(function(vote) { return vote.title; })
-        .on('click', voteFor)
+        .on('click', function(vote) { voting.voteFor(vote.id); return false; })
         .transition().style('opacity', 1);
 
     join.transition().style({
-            'width': function(vote) { return vote.votes + 100 + 'px'; }
+            'width': widthOf
         })
         .text(function(vote) { return vote.title; })
         .transition().style('opacity', 1);
@@ -648,6 +646,7 @@ pt.slideIdToFunctions = pt.slideIdToFunctions || {};
 pt.slideIdToFunctions['votes-slide'] = {
     'init': function() {
         updateVoteChart();
+        voting.on('votesChanged', updateVoteChart);
     }
 }
 </script>
@@ -696,7 +695,8 @@ pt.slideIdToFunctions['votes-slide'] = {
                     { src: 'js/reveal-function-mapper.js', async: true },
                     //{ src: 'http://localhost:1948/socket.io/socket.io.js', async: true },
                     //{ src: 'js/master.js', async: true },
-                    //{ src: 'js/client.js', async: true }
+                    //{ src: 'js/client.js', async: true },
+                    { src: 'js/voting.js', async: true },
                 ]
             });
 

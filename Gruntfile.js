@@ -86,7 +86,7 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: 'src/index.html',
+            files: ['src/index.html', 'src/js/*'],
             tasks: ['copy']
         }
     });
