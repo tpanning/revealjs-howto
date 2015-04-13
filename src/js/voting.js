@@ -5,6 +5,15 @@ var voting = function(){
 
     var votes = {};
 
+    var multiplex = Reveal.getConfig().multiplex;
+    var socketId = multiplex.id;
+
+	socket.on('votes', function(officialVotes) {
+        console.log(officialVotes);
+        votes = officialVotes;
+        notifyHandlers();
+	});
+
     var notifyHandlers = function() {
         for (var i in eventHandlers) {
             eventHandlers[i]();
@@ -12,11 +21,9 @@ var voting = function(){
     };
 
     self.voteFor = function(voteId) {
-        if (!votes.hasOwnProperty(voteId)) {
-            votes[voteId] = 0;
-        }
-        votes[voteId] = votes[voteId]+1;
-        notifyHandlers();
+        var voteObj = { socketId: socketId };
+        voteObj[voteId] = 1;
+        socket.emit('vote', voteObj);
         return self;
     };
 

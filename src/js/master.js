@@ -38,13 +38,8 @@
 		}
 	}
 
-    var sendVote = function() {
-        socket.emit('vote', {'myfavorite': 1, 'dontlike': 0});
-    }
-
 	Reveal.addEventListener( 'slidechanged', function( event ) {
 		notify( event.currentSlide, event.indexh, event.indexv, event.origin );
-        sendVote();
 	} );
 
 	var fragmentNotify = function( event ) {

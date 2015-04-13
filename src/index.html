@@ -677,8 +677,8 @@ pt.slideIdToFunctions['votes-slide'] = {
                 transition: 'slide', // none/fade/slide/convex/concave/zoom
 
                 multiplex: {
-                    //secret: '14287146798916126548',
-                    secret: null,
+                    secret: '14287146798916126548',
+                    //secret: null,
                     id: '91be7b22e6b10e3a',
                     url: 'http://localhost:1948'
                 },
@@ -693,9 +693,9 @@ pt.slideIdToFunctions['votes-slide'] = {
                     { src: 'js/Chart.js', async: true, callback: initializeChartJsLine },
                     { src: 'js/d3.min.js', async: true },
                     { src: 'js/reveal-function-mapper.js', async: true },
-                    //{ src: 'http://localhost:1948/socket.io/socket.io.js', async: true },
-                    //{ src: 'js/master.js', async: true },
-                    //{ src: 'js/client.js', async: true },
+                    { src: 'http://localhost:1948/socket.io/socket.io.js', async: true },
+                    { src: 'js/master.js', async: true },
+                    { src: 'js/client.js', async: true },
                     { src: 'js/voting.js', async: true },
                 ]
             });
