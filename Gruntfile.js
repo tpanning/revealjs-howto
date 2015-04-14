@@ -79,6 +79,11 @@ module.exports = function(grunt) {
                     dest: '<%= config.dist %>'
                 }, {
                     expand: true,
+                    cwd: 'src/css',
+                    src: 'slides.css',
+                    dest: '<%= config.dist %>/css'
+                }, {
+                    expand: true,
                     cwd: 'src/',
                     src: 'index.html',
                     dest: '<%= config.dist %>'
@@ -86,7 +91,7 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['src/index.html', 'src/js/*'],
+            files: ['src/**'],
             tasks: ['copy']
         }
     });

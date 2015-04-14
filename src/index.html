@@ -16,6 +16,7 @@
 
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="css/slides.css">
         <style>
 #github-ribbon {
     display: none;
@@ -588,29 +589,25 @@ $ node app.js -p 3000 --sshauth "publickey"
                 </section>
 
                 <section id="votes-slide">
-                    <div id="votes"></div>
+                    <table id="votes" class="barchart"></table>
 <script>
 var pt = pt || {};
 var votes = [
     {
         id: 'twilio',
-        title: 'Twilio',
-        votes: 0
+        title: 'Twilio'
     },
     {
         id: 'started',
-        title: 'Getting started',
-        votes: 0
+        title: 'Getting started'
     },
     {
         id: 'markdown',
-        title: 'Markdown-only slides',
-        votes: 0
+        title: 'Markdown-only slides'
     },
     {
         id: 'multiplex',
-        title: 'Multiplex',
-        votes: 0
+        title: 'Multiplex'
     }
 ];
 
@@ -621,25 +618,26 @@ function widthOf(vote) {
 
 function updateVoteChart() {
     var voteChart = d3.select("#votes");
+    console.log('updating');
 
-    var join = voteChart.selectAll('p').data(votes, function(vote){ return vote.id})
-    join.enter().append('p')
+    var join = voteChart.selectAll('tr').data(votes, function(vote){ return vote.id});
+    var row = join.enter().append('tr')
+    row.append('td')
+        .classed('bar-label', true)
+        .text(function(vote) { return vote.title; })
+        .on('click', function(vote) { voting.voteFor(vote.id); return false; });
+    row.append('td').append('div')
+        .classed('bar', true)
         .style({
-            'background-color': function(vote) { return "#42affa"; },
-            'color': function(vote) { return 'black'; },
-            'width': widthOf
+            'width': widthOf,
         })
-        .text(function(vote) { return vote.title; })
-        .on('click', function(vote) { voting.voteFor(vote.id); return false; })
         .transition().style('opacity', 1);
 
-    join.transition().style({
+    voteChart.selectAll('.bar').data(votes, function(vote) { return vote.id})
+        .transition().style({
             'width': widthOf
         })
-        .text(function(vote) { return vote.title; })
         .transition().style('opacity', 1);
-
-    join.exit().transition().style('opactiy', 0).remove();
 }
 
 pt.slideIdToFunctions = pt.slideIdToFunctions || {};

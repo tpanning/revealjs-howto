@@ -9,7 +9,6 @@ var voting = function(){
     var socketId = multiplex.id;
 
 	socket.on('votes', function(officialVotes) {
-        console.log(officialVotes);
         votes = officialVotes;
         notifyHandlers();
 	});

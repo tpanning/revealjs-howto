@@ -1,0 +1,13 @@
+.barchart .bar {
+    background-color: #42affa;
+    height: 10px;
+}
+
+.barchart .bar-label {
+    text-align: right;
+}
+
+/* The .reveal selector is needed to make this more specific than Reveal's style sheet */
+.reveal table.barchart, .reveal .barchart tr, .reveal .barchart td {
+    border-style: none;
+}
