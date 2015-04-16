@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>reveal.js - The HTML Presentation Framework</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="css/slides.css">
+        <style>
+#github-ribbon {
+    display: none;
+}
+
+#github-ribbon img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    z-index: 1000;
+}
+
+.with-github-ribbon #github-ribbon {
+    display: block;
+}
+        </style>
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <!--
+            If you want the ribbon on all slides, just put this link in.
+            To have it only shown on some slides, see the slidechanged handler toward the end of this file.
+        -->
+        <a id="github-ribbon" href="https://github.com/tpanning/revealjs-howto"><img src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>Reveal.js</h1>
+                    <h3>A How-To Meta-Presentation</h3>
+                    <p>
+                        <small>Created by Tom Panning</small>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Basics</h2>
+                    <ul>
+                        <li>HTML bullets</li>
+                        <li>And sub-bullets:
+                            <ul>
+                                <li>Like this</li>
+                                <li>And this</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="fragment"><code data-trim>
+&lt;section&gt;
+    <h2>Basics</h2>
+    <ul>
+        <li>HTML bullets</li>
+        <li>And sub-bullets:
+            <ul>
+                <li>Like this</li>
+                <li>And this</li>
+            </ul>
+        </li>
+    </ul>
+&lt;/section&gt;
+                    </code></pre>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Did you see that?</h2>
+                        <pre><code data-trim>
+&lt;pre class="fragment"&gt;&lt;code data-trim&gt;
+&lt;section&gt;
+    ...blah blah blah
+    you already saw this part...
+&lt;/section&gt;
+&lt;/code&gt;&lt;/pre&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>(Tables too)</h2>
+                        <table>
+                            <tr><th></th><th>Foo</th><th>Bar</th></tr>
+                            <tr>
+                                <td>Bazz</td>
+                                <td>Grey</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>Boo</td>
+                                <td>Purple</td>
+                                <td>15</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>Far</td>
+                                <td>Black</td>
+                                <td>42</td>
+                            </tr>
+                        </table>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>Transitions</h1>
+                    </section>
+
+                    <section data-transition="concave">
+                        <h1>Concave</h1>
+                    </section>
+
+                    <section data-transition="convex">
+                        <h1>Convex</h1>
+                    </section>
+
+                    <section data-transition="fade">
+                        <h1>Fade</h1>
+                    </section>
+
+                    <section data-transition="zoom">
+                        <h1>Zoom</h1>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>Backgrounds</h1>
+                    </section>
+
+                    <section data-background="turquoise">
+                        <h1>Solid Colors</h1>
+                    </section>
+
+                    <section data-background="http://www.dreamitventures.com/wp-content/uploads/2014/10/Development-Landing-Baltimore2.jpg">
+                        <h1>Images</h1>
+                    </section>
+
+                    <section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm">
+                        <h1>Videos</h1>
+                    </section>
+
+                    <section data-background="white" data-background-iframe="http://24timezones.com/">
+                        <h1>Webpages</h1>
+                    </section>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Markdown
+
+* For when you need to churn out the presentation quick
+* Or a non-developer should be able to edit it
+* Or when the < key is broken
+
+    ```
+    <section data-markdown>
+    <script type="text/template">
+      ## Markdown support
+
+      * For when you need to churn out the presentation quick
+      * Or a non-developer should be able to edit it
+      * Or when the < key is broken
+    < /script>
+    </section>
+    ```
+                    </script>
+                </section>
+
+                <section>
+                    <h1>Sharing Slides</h1>
+                </section>
+
+                <section>
+                    <h2>PDF Export</h2>
+                    <ul>
+                        <li>Just add <a target="_blank" href="index.html?print-pdf"><code>?print-pdf</code></a> to the URL and print</li>
+                        <li>Works best with Chrome</li>
+                    </ul>
+                </section>
+
+                <section data-state="with-github-ribbon">
+                    <h2>Collaborate on GitHub</h2>
+                    <ul>
+                        <li>Version tracking</li>
+                        <li>Diffs</li>
+                        <li>Pull requests</li>
+                        <li>Even <a href="http://slidedeck.io/EvanOxfeld/revealjs-on-github-presentation">host
+                            using GitHub Pages</a></li>
+                        <li class="fragment">Or keep merging PowerPoint slides...</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Sharing for Non-Programmers</h2>
+                    <ol>
+                        <li>Use <a href="http://www.jsdelivr.com/#!reveal.js">jsDelivr</a> for JavaScript and CSS</li>
+                        <li>Share <code>index.html</code> - no other files needed</li>
+                        <li>See my example project
+                        <a href="https://github.com/tpanning/revealjs-solo">reveal.js Solo</a></li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h1>Show Me<br>The<br>JavaScript</h1>
+                </section>
+
+                <section>
+                    <pre><code data-trim>
+Reveal.addEventListener('ready', function(event) {
+    // event.currentSlide, event.indexh, event.indexv
+});
+Reveal.addEventListener('slidechanged', function(event) {
+    // event.previousSlide, event.currentSlide,
+    // event.indexh, event.indexv
+});
+Reveal.addEventListener('fragmentshown', function(event) {
+    // event.fragment = the fragment DOM element
+});
+Reveal.addEventListener('fragmenthidden', function(event) {
+    // event.fragment = the fragment DOM element
+});
+                    </code></pre>
+                </section>
+
+                <section data-state="with-github-ribbon">
+                    <pre><code class="html" data-trim>
+&lt;body&gt;
+    &lt;a id="github-ribbon" href="..."&gt;&lt;img ...&gt;&lt;/a&gt;
+    &lt;slides&gt;
+        ...
+        &lt;section data-state="with-github-ribbon"&gt;
+            &lt;h2&gt;Collaborate on Github&lt;/h2&gt;
+        &lt;/section&gt;
+        ...
+    &lt;/slides&gt;
+&lt;script&gt;
+Reveal.addEventListener( 'with-github-ribbon', function() {
+    // Not necessary in this case, but useful in other situations
+}, false );
+&lt;/script&gt;
+&lt;/body&gt;
+                    </pre></code>
+                    <pre><code class="css" data-trim>
+#github-ribbon {
+    display: none;
+}
+.with-github-ribbon #github-ribbon {
+    display: block;
+}
+                    </code></pre>
+
+                </section>
+
+                <section id="chartjs-line">
+                    <h2>Chart.js</h2>
+                    <canvas id="lineChart" width="500px" height="500px"></canvas>
+                    <script>
+function initializeChartJsLine() {
+    var ctx = document.getElementById("lineChart").getContext("2d");
+    var data = {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [65, 59, 80, 81, 56, 55, 40]
+            },
+            {
+                label: "My Second dataset",
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [28, 48, 40, 19, 86, 27, 90]
+            }
+        ]
+    };
+    var myLineChart = new Chart(ctx).Line(data);
+}
+                    </script>
+                </section>
+
+                <section>
+                    <pre><code class="html" data-trim>
+&lt;section&gt;
+    &lt;canvas id="lineChart" width="500px" height="500px"&gt;&lt;/canvas&gt;
+&lt;/section&gt;
+                    </code></pre>
+
+                    <pre><code class="javascript" data-trim>
+function initializeChartJsLine() {
+    var ctx = document.getElementById("lineChart").getContext("2d");
+    var data = {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [65, 59, 80, 81, 56, 55, 40]
+            },
+            {
+                label: "My Second dataset",
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [28, 48, 40, 19, 86, 27, 90]
+            }
+        ]
+    };
+    var myLineChart = new Chart(ctx).Line(data);
+}
+Reveal.initialize({
+    // ...
+    dependencies: [
+        // ...
+        { src: 'js/Chart.js', async: true, callback: initializeChartJsLine },
+    ]
+});
+                    </code></pre>
+                </section>
+
+                <section>
+                    A better way using Pablo Tamarit's <a
+                        href="https://github.com/ptamarit/slides-data-viz-web-d3/blob/master/src/js/reveal-to-d3.js">reveal-to-d3.js</a>,
+                    which I've tweaked to <a
+                        href="">reveal-function-mapper.js</a><!-- TODO - Repo for this? -->
+                </section>
+
+                <section>
+                    <pre><code class="html" data-trim>
+&lt;section id="chartjs-bar"&gt;
+    &lt;canvas id="barChart" width="500px" height="500px"&gt;&lt;/canvas&gt;
+    &lt;span class="fragment"&gt;&lt;/span&gt;
+&lt;/section&gt;
+                    </code></pre>
+
+                    <pre><code class="javascript" data-trim>
+var myBarChart;
+var pt = pt || {};
+pt.slideIdToFunctions = pt.slideIdToFunctions || {};
+pt.slideIdToFunctions['chartjs-bar'] = {
+    'init': function() {
+        var ctx = document.getElementById("barChart").getContext("2d");
+        var data = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(151,187,205,0.5)",
+                    strokeColor: "rgba(151,187,205,0.8)",
+                    highlightFill: "rgba(151,187,205,0.75)",
+                    highlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                }
+            ]
+        };
+        myBarChart = new Chart(ctx).Bar(data);
+    },
+    '-1': function() {
+        myBarChart.datasets[0].bars[2].value = 80;
+        myBarChart.update();
+    },
+    '0': function() {
+        myBarChart.datasets[0].bars[2].value = 50;
+        myBarChart.update();
+    }
+};
+                    </code></pre>
+                </section>
+
+                <section id="chartjs-bar">
+                    <h2>Chart.js</h2>
+                    <canvas id="barChart" width="500px" height="500px"></canvas>
+                    <span class="fragment"></span>
+                    <script>
+var myBarChart;
+var pt = pt || {};
+pt.slideIdToFunctions = pt.slideIdToFunctions || {};
+pt.slideIdToFunctions['chartjs-bar'] = {
+    'init': function() {
+        var ctx = document.getElementById("barChart").getContext("2d");
+        var data = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(151,187,205,0.5)",
+                    strokeColor: "rgba(151,187,205,0.8)",
+                    highlightFill: "rgba(151,187,205,0.75)",
+                    highlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                }
+            ]
+        };
+        myBarChart = new Chart(ctx).Bar(data);
+    },
+    '-1': function() {
+        myBarChart.datasets[0].bars[2].value = 80;
+        myBarChart.update();
+    },
+    '0': function() {
+        myBarChart.datasets[0].bars[2].value = 50;
+        myBarChart.update();
+    }
+};
+                    </script>
+                </section>
+
+                <section>
+                    <table>
+                        <tr><th>Chart.js</th><th class="fragment" data-fragment-index="1">D3</th></tr>
+                        <tr><td>Common charts (line, bar, pie, etc.)</td><td class="fragment" data-fragment-index="1">If you can dream it, D3
+                                can render it</td></tr>
+                        <tr><td>Quick &amp; easy</td><td class="fragment" data-fragment-index="1">With great power comes great frustration</td></tr>
+                        <tr><td>Takes ownership of data</td><td class="fragment" data-fragment-index="0">Data Driven Documents</td></tr>
+                    </table>
+                </section>
+
+                <section id="d3-fragments">
+                    <h2>D3 Integration</h2>
+                    <div id="awesomeness"></div>
+                    <span class="fragment"></span>
+                    <span class="fragment"></span>
+<script>
+function updateD3FragmentsSlide(categories) {
+    var rows = d3.select("#awesomeness");
+
+    var join = rows.selectAll("p").data(categories,function(category){return category.id});
+    join.enter().append("p")
+        .style({
+            "background-color": function (category) { return "#42affa"; },
+            "color": function(category) { return "black"; },
+            "width": function (category) { return category.score + "px"; }
+        })
+        .text(function(category) { return category.name })
+            .transition().style("opacity", 1);
+
+    join.transition().style({
+            "width": function (category) { return category.score + "px"; }
+        }).text(function(category) { return category.name })
+        .transition().style("opacity", 1);
+
+    join.exit().transition().style("opacity", 0).remove();
+}
+
+var pt = pt || {};
+pt.slideIdToFunctions = pt.slideIdToFunctions || {};
+pt.slideIdToFunctions['d3-fragments'] = {
+    'init': function() {
+        var houses = [
+            { id: "pp", name: "PowerPoint", score: 0 },
+            { id: "reveal", name: "Reveal.js", score: 0 },
+        ];
+
+    },
+    '-1': function() {
+        var houses = [
+            { id: "pp", name: "PowerPoint", score: 200 },
+            { id: "reveal", name: "Reveal.js", score: 400 },
+        ];
+
+        updateD3FragmentsSlide(houses);
+    },
+    0: function() {
+        var houses = [
+            { id: "pp", name: "PowerPoint", score: 200 },
+            { id: "reveal", name: "Reveal.js", score: 400 },
+            { id: "reveal-d3", name: "Reveal.js + D3", score: 600 },
+        ];
+
+        updateD3FragmentsSlide(houses);
+    },
+    1: function() {
+        var houses = [
+            { id: "pp", name: "PowerPoint", score: 200 },
+            { id: "reveal", name: "Reveal.js", score: 400 },
+            { id: "reveal-d3", name: "Reveal.js + D3 + Fragments", score: 800 },
+        ];
+
+        updateD3FragmentsSlide(houses);
+    }
+};
+
+</script>
+                </section>
+
+                <section>
+                    <h1>Web-app Demos</h1>
+                </section>
+
+                <section iframe-demo data-background-iframe="http://demo.neonframework.org/neon-examples/app/">
+                </section>
+
+                <section>
+                    <pre><code class="html" data-trim>
+&lt;section iframe-demo data-background-iframe="http://demo.neonframework.org/neon-examples/app/"&gt;
+&lt;/section&gt;
+                    </code></pre>
+                    <pre><code class="javascript" data-trim>
+Reveal.addEventListener('slidechanged', function(event) {
+    // Pull background up when a demo-iframe is being shown
+    if (event.currentSlide.hasAttribute('iframe-demo')) {
+        document.querySelector('.reveal > .backgrounds').style['z-index'] = 1;
+    } else {
+        document.querySelector('.reveal > .backgrounds').style['z-index'] = 0;
+    }
+});
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Terminal-ly Awesome</h2>
+                    <pre><code class="bash" data-trim>
+$ git clone https://github.com/krishnasrinivas/wetty
+$ cd wetty
+$ npm install
+$ node app.js -p 3000 --sshauth "publickey"
+                    </code></pre>
+                    <p><small>*Wetty only works in Chrome, but there are similar solutions that work in
+                        other browsers too</small>
+
+                </section>
+
+                <section iframe-demo data-background-iframe="http://localhost:3000/wetty">
+                </section>
+
+                <section>
+                    <h1>What else?</h1>
+                </section>
+
+                <section id="votes-slide">
+                    <table id="votes" class="barchart"></table>
+<script>
+var pt = pt || {};
+var votes = [
+    {
+        id: 'started',
+        title: 'Getting started'
+    },
+    {
+        id: 'pages',
+        title: 'GitHub Pages'
+    },
+    {
+        id: 'wetty',
+        title: 'Wetty'
+    },
+    {
+        id: 'mapper',
+        title: 'Function mapper'
+    },
+    {
+        id: 'multiplex',
+        title: 'Multiplex'
+    },
+    {
+        id: 'voting',
+        title: 'Voting'
+    }
+];
+
+function widthOf(vote) {
+    var voteCount = voting.getVotesFor(vote.id);
+    return (5 + voteCount*5) + 'px';
+}
+
+function updateVoteChart() {
+    var voteChart = d3.select("#votes");
+    console.log('updating');
+
+    var join = voteChart.selectAll('tr').data(votes, function(vote){ return vote.id});
+    var row = join.enter().append('tr')
+    row.append('td')
+        .classed('bar-label', true)
+        .text(function(vote) { return vote.title; })
+        .on('click', function(vote) { voting.voteFor(vote.id); return false; });
+    row.append('td').append('div')
+        .classed('bar', true)
+        .style({
+            'width': widthOf,
+        })
+        .transition().style('opacity', 1);
+
+    voteChart.selectAll('.bar').data(votes, function(vote) { return vote.id})
+        .transition().style({
+            'width': widthOf
+        })
+        .transition().style('opacity', 1);
+}
+
+pt.slideIdToFunctions = pt.slideIdToFunctions || {};
+pt.slideIdToFunctions['votes-slide'] = {
+    'init': function() {
+        updateVoteChart();
+        voting.on('votesChanged', updateVoteChart);
+    }
+}
+</script>
+                </section>
+
+                <section>
+                    <h1>Questions?</h1>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                margin: 0.05,
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                multiplex: {
+                    secret: '14287146798916126548',
+                    //secret: null,
+                    id: '91be7b22e6b10e3a',
+                    url: 'http://45.55.128.120:1948/'
+                },
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'js/zoom.js', async: true },
+                    { src: 'js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'js/Chart.js', async: true, callback: initializeChartJsLine },
+                    { src: 'js/d3.min.js', async: true },
+                    { src: 'js/reveal-function-mapper.js', async: true },
+                    { src: 'http://45.55.128.120:1948/socket.io/socket.io.js', async: true },
+                    { src: 'js/master.js', async: true },
+                    { src: 'js/client.js', async: true },
+                    { src: 'js/voting.js', async: true },
+                ]
+            });
+
+            Reveal.addEventListener('slidechanged', function(event) {
+                // Pull background up when a demo-iframe is being shown
+                if (event.currentSlide.hasAttribute('iframe-demo')) {
+                    document.querySelector('.reveal > .backgrounds').style['z-index'] = 1;
+                } else {
+                    document.querySelector('.reveal > .backgrounds').style['z-index'] = 0;
+                }
+            });
+
+        </script>
+
+    </body>
+</html>
